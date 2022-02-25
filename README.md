@@ -1,5 +1,8 @@
+# react vite ssr
 
+# LICENSE: MIT
 
+# Create by: Lightnet
 
 # Information:
 
@@ -42,6 +45,16 @@ export function render(url) {
 
 react-router-dom v5 Switch 
 ```js
+//...
+const routes = Object.keys(pages).map((path) => {
+  const name = path.match(/\.\/pages\/(.*)\.jsx$/)[1]
+  return {
+    name,
+    path: name === 'Home' ? '/' : `/${name.toLowerCase()}`,
+    component: pages[path].default
+  }
+})
+//...
 export function App() {
   return (
     <>
@@ -72,6 +85,16 @@ export function App() {
 
 react-router-dom v6 Routes 
 ```js
+//...
+const pageroutes = Object.keys(pages).map((path) => {
+  const name = path.match(/\.\/pages\/(.*)\.jsx$/)[1]
+  return {
+    name,
+    path: name === 'Home' ? '/' : `/${name.toLowerCase()}`,
+    component: pages[path].default
+  }
+})
+//...
 export function App() {
   return (
     <>
@@ -97,6 +120,9 @@ export function App() {
   )
 }
 ```
+  Due to same name for routes had to add routes to pageroutes.
+
+
 # set up:
 - install the nodejs
 
@@ -119,6 +145,8 @@ $ npm run dev
 ```
 This will run the server and hot reload react.
 
+# Notes:
+- It took some time to read the code file to understand how it works.
 
 # Links:
 - https://reactrouter.com/docs/en/v6/guides/ssr
